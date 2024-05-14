@@ -676,6 +676,72 @@ void test_strmapi()
     printf("\nft_strmapi: todos os testes passaram com sucesso!\n");
 }
 
+void upper_case_n(unsigned int index, char *c) {
+    printf("%d", index);
+    index = 0;
+    if (*c >= 'a' && *c <= 'z') {
+        *c -= ('a' - 'A');
+    }
+}
+void test_striteri()
+{
+    char str[] = "Hello, World!";
+    ft_striteri(str, &upper_case_n);
+    assert(ft_strncmp(str, "HELLO, WORLD!",13) == 0);
+
+    char str2[] = "";
+    ft_striteri(str2, &upper_case_n);
+    assert(ft_strncmp(str2, "", 0) == 0);
+
+    char str3[] = "   Teste   ";
+    ft_striteri(str3, &upper_case_n);
+    assert(ft_strncmp(str3, "   TESTE   ", 11) == 0);
+
+    printf("\nft_striteri: todos os testes passaram com sucesso!\n");
+}
+void test_putchar_fd()
+{
+    char c = 'A';
+    ft_putchar_fd(c, 1);
+    printf("\nft_putchar_fd: todos os testes passaram com sucesso!\n");
+}
+void    test_putstr_fd()
+{
+    char *str = "Hello, World!";
+    ft_putstr_fd(str, 1);
+    printf("\nft_putstr_fd: todos os testes passaram com sucesso!\n");
+}
+void    test_putendl_fd()
+{
+    char *str = "Hello, World com quebra de alinea!";
+    ft_putendl_fd(str, 1);
+    printf("ft_putendl_fd: todos os testes passaram com sucesso!\n");
+}
+void    test_putnbr_fd()
+{
+    int num1 = 12345;
+    ft_putnbr_fd(num1, 1);
+    
+    int num2 = -6789;
+    ft_putnbr_fd(num2, 1);
+
+    int num3 = 0;
+    ft_putnbr_fd(num3, 1);
+
+    int num4 = -2147483648;
+    ft_putnbr_fd(num4, 1);
+
+    int num5 = 2147483647;
+    ft_putnbr_fd(num5, 1);
+
+    int num6 = 9;
+    ft_putnbr_fd(num6, 1);
+
+    int num7 = 900000;
+    ft_putnbr_fd(num7, 1);
+    printf("\nft_putnbr_fd: todos os testes passaram com sucesso!\n");
+}
+
 int main() {
     test_atoi();
     test_bzero();
@@ -706,5 +772,10 @@ int main() {
     test_split();
     test_itoa();
     test_strmapi();
+    test_striteri();
+    test_putchar_fd();
+    test_putstr_fd();
+    test_putendl_fd();
+    test_putnbr_fd();
     return 0;
 }
